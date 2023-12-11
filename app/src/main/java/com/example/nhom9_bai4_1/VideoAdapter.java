@@ -4,6 +4,8 @@ import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -29,6 +31,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     @Override
     public void onBindViewHolder(@NonNull VideoViewHolder holder, int position) {
         holder.setVideoView(videoList.get(position));
+
+        MediaController mediaController = new MediaController(holder.itemView.getContext());
+        mediaController.setAnchorView(holder.videoView);
+        holder.videoView.setMediaController(mediaController);
     }
 
     @Override
@@ -39,12 +45,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     public class VideoViewHolder extends RecyclerView.ViewHolder{
         VideoView videoView;
         TextView title, desc;
+        ProgressBar videoProgressBar;
             public VideoViewHolder(@NonNull View itemView){
                 super(itemView);
 
                 videoView = itemView.findViewById(R.id.videoView);
                 title = itemView.findViewById(R.id.video_title);
                 desc = itemView.findViewById(R.id.video_desc);
+                videoProgressBar= itemView.findViewById(R.id.videoProgressBar);
             }
 
             public void setVideoView(Video video){

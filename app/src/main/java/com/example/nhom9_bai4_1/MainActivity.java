@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.widget.MediaController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         videoList.add(new Video("android.resource://"+getPackageName()+ "/" + R.raw.video_two, "New Title","Love Screnn"));
         adapter = new VideoAdapter(videoList);
         viewPager2.setAdapter(adapter);
+
+
     }
 
 }
